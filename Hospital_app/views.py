@@ -15,7 +15,7 @@ def add_product(request):
         table = product()
         table.product_name = request.POST['product_name']
         table.product_type = d_type.objects.get(type_id = request.POST['product_type'])
-        table.product_qty = request.POST['product_qty']
+        table.product_qty = request.POST['quantity']
         table.product_exp = request.POST['product_expired']
         table.save()
         return redirect('/manage_product')
@@ -42,6 +42,10 @@ def manage_type(request):
 
 
 
+def delete_report(request,pk):
+    table = product.objects.get(report_id=pk)
+    table.delete()
+    return redirect('/buy_product')
 
 def delete_product(request,pk):
     table = product.objects.get(product_id=pk)

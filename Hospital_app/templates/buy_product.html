@@ -1,16 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="mt-2 pt-2 ps-3 pb-1 bg-danger text-white rounded">
-    <h4>จัดการประวัติการเบิกยา</h4>
+<div class="mt-2 p-2 bg-danger text-center text-white rounded h3">
+    จัดการประวัติการนำส่งสินค้า
 </div>
 <div class="container-fluid my-3 justify-content-center align-items-center shadow rounded">
     <table class="table table-responsive">
         <thead>
             <tr>
-                <th>ชื่อผู้เบิก</th>
+                <th>รหัสการนำส่ง</th>
+                <th>ชื่อผู้นำส่ง</th>
                 <th>ที่อยู่</th>
                 <th>เบอร์โทร</th>
-                <th>ชื่อยาที่เบิก</th>
+                <th>ชื่อสินค้าที่เบิก</th>
                 <th>จำนวน</th>
                 <th>เครื่องมือ</th>
             </tr>
@@ -18,12 +19,13 @@
         <tbody>
             {% for i in report %}
                 <tr>
+                    <td class="pt-3">{{ i.report_id }}</td>
                     <td class="pt-3">{{ i.username }}</td>
                     <td class="pt-3">{{ i.address }}</td>
                     <td class="pt-3">{{ i.tal }}</td>
                     <td class="pt-3">{{ i.product_name }}</td>
                     <td class="pt-3">{{ i.product_qty }}</td>
-                    <td><a href="delete_type/{{ i.username }}/" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal" onclick="setDeleteUrl('delete_type/{{ i.username }}/')">ลบ</a></td>
+                    <td><a href="delete_report/{{ i.report_id }}/" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal" onclick="setDeleteUrl('delete_report/{{ i.report }}/')">ลบ</a></td>
                 </tr>
             {% endfor %}
         </tbody>

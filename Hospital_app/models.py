@@ -9,7 +9,6 @@ class d_type(models.Model):
 class product(models.Model):
     product_id = models.AutoField(primary_key=True)
     product_name = models.CharField(max_length=255)
-    product_img = models.ImageField(upload_to='images/drug',null=True)
     product_type = models.ForeignKey(d_type, on_delete=models.CASCADE)
     product_qty = models.IntegerField()
     product_exp = models.DateField()
@@ -25,6 +24,7 @@ class userbuy(models.Model):
         return f"{self.username} , {self.tal}"
     
 class report_buy(models.Model):
+    report_id = models.AutoField(primary_key=True)
     username = models.CharField(max_length=255)
     address = models.CharField(max_length=255)
     tal = models.CharField(max_length=255)

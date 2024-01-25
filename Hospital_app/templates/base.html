@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% block title %}Hospital{% endblock %}</title>
+    <title>{% block title %}BD Store{% endblock %}</title>
     {% load bootstrap5 %} {% bootstrap_css %} {% bootstrap_javascript %}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -27,12 +27,12 @@
     </style>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
       <div class="container-fluid">
         <!-- Logo/Brand on the Left -->
         <a class="navbar-brand" href="#"
-          ><i class="fa fa-heartbeat" aria-hidden="true"></i>
-          ระบบจัดการห้องพยาบาล
+          ><i class="fa-solid fa-store" aria-hidden="true"></i>
+          ระบบจัดการสินค้า
         </a>
 
         <!-- Toggler Button for Small Screens -->
@@ -60,24 +60,51 @@
             <li class="nav-item">
               <a class="nav-link" href="/report">
                 <i class="fa fa-tachometer" aria-hidden="true"></i>
-                รายงาน</a
+                ข้อมูลการนำส่งสินค้า</a
               >
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/buy_productu">
                 <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
-                ขอเบิกยา</a
+                นำส่งสินค้า</a
               >
             </li>
             {% if user.is_staff %}
             <li class="nav-item">
               <a class="nav-link" href="/buy_product">
                 <i class="fa fa-gear" aria-hidden="true"></i>
-                จัดการข้อมูลเบิกยา</a
+                จัดการข้อมูลการนำส่งสินค้า</a
               >
             </li>
             <!-- Dropdown Menu -->
-            
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i class="fa fa-gear" aria-hidden="true"></i>
+                จัดการข้อมูลยา
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <a class="dropdown-item" href="/add_product">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    เพิ่มสินค้า</a
+                  >
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="/manage_product">
+                    <i class="fa fa-wrench" aria-hidden="true"></i>
+                    แก้ไขข้อมูลสินค้า</a
+                  >
+                </li>
+              </ul>
+            </li>
 
             <li class="nav-item dropdown">
               <a
@@ -89,20 +116,20 @@
                 aria-expanded="false"
               >
                 <i class="fa fa-gear" aria-hidden="true"></i>
-                จัดการประเภทยา
+                จัดการประเภทสินค้า
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
                   <a class="dropdown-item" href="/add_type">
                     <i class="fa fa-plus" aria-hidden="true"></i>
-                    เพิ่มประเภทยา</a
+                    เพิ่มประเภทสินค้า</a
                   >
                 </li>
                 <li><hr class="dropdown-divider" /></li>
                 <li>
                   <a class="dropdown-item" href="/manage_type">
                     <i class="fa fa-wrench" aria-hidden="true"></i>
-                    แก้ไขประเภทยา</a
+                    แก้ไขประเภทสินค้า</a
                   >
                 </li>
               </ul>
