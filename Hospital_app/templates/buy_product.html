@@ -25,7 +25,7 @@
                     <td class="pt-3">{{ i.tal }}</td>
                     <td class="pt-3">{{ i.product_name }}</td>
                     <td class="pt-3">{{ i.product_qty }}</td>
-                    <td><a href="delete_report/{{ i.report_id }}/" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal" onclick="setDeleteUrl('delete_report/{{ i.report }}/')">ลบ</a></td>
+                    <td><a href="/delete_report/{{ i.report_id }}" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal" onclick="setDeleteUrl('/delete_report/{{ i.report }}')">ลบ</a></td>
                 </tr>
             {% endfor %}
         </tbody>

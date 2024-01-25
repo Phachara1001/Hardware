@@ -21,7 +21,7 @@ urlpatterns = [
     path('manage_type',views.manage_type),
     path('delete/<int:pk>',views.delete_product),
     path('delete_type/<int:pk>/', views.delete_type, name='delete_type'),
-    path('delete_report/<int:pk>/', views.delete_report, name='delete_report'),
+    path('/delete_report/<int:pk>/', views.delete_report, name='delete_report'),
     path('edit/<int:pk>',views.edit_product),#หน้าแก้ไขข้อมูลยา
     path('editt/<int:pk>',views.edit_type),#หน้าแก้ไขข้อมูลประเภทยา
     path('increase_qty/<int:pk>',views.increase_product),#หน้าเพิ่มจำนวนยา
