@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
-<!-- buy_drug.html -->
+<!-- buy_product.html -->
 
-<!-- buy_drugu.html -->
+<!-- buy_productu.html -->
 <form method="POST">
     {% csrf_token %}
     <div class="container p-2 mt-2 rounded-lg shadow">
@@ -23,9 +23,9 @@
               </div>
               <div class="form-group">
                 <label for="exampleFormControlSelect1">ชื่อยาที่ต้องการเบิก</label>
-                <select class="form-control" name="drug_name" id="drug_name" required>
-                    {% for drug in drugs %}
-                    <option value="{{ drug.drug_name }}">{{ drug.drug_name }}</option>
+                <select class="form-control" name="product_name" id="product_name" required>
+                    {% for product in products %}
+                    <option value="{{ product.product_name }}">{{ product.product_name }}</option>
                 {% endfor %}
                 </select>
                 <label for="quantity">จำนวน :</label>

@@ -8,7 +8,10 @@
     {% load bootstrap5 %} {% bootstrap_css %} {% bootstrap_javascript %}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link
+      rel="stylesheet"
+      href="path/to/font-awesome/css/font-awesome.min.css"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@500&display=swap"
       rel="stylesheet"
@@ -27,8 +30,9 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-success">
       <div class="container-fluid">
         <!-- Logo/Brand on the Left -->
-        <a class="navbar-brand" href="#"><i class="fa fa-heartbeat" aria-hidden="true"></i>
-        ระบบจัดการห้องพยาบาล
+        <a class="navbar-brand" href="#"
+          ><i class="fa fa-heartbeat" aria-hidden="true"></i>
+          ระบบจัดการห้องพยาบาล
         </a>
 
         <!-- Toggler Button for Small Screens -->
@@ -50,23 +54,27 @@
             <li class="nav-item">
               <a class="nav-link" href="/">
                 <i class="fa fa-home" aria-hidden="true"></i>
-                หน้าเเรก</a>
+                หน้าเเรก</a
+              >
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/report">
                 <i class="fa fa-tachometer" aria-hidden="true"></i>
-                รายงาน</a>
+                รายงาน</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/buy_drugu">
+              <a class="nav-link" href="/buy_productu">
                 <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
-                ขอเบิกยา</a>
+                ขอเบิกยา</a
+              >
             </li>
-            {% if  user.is_staff %}
+            {% if user.is_staff %}
             <li class="nav-item">
-              <a class="nav-link" href="/buy_drug">
+              <a class="nav-link" href="/buy_product">
                 <i class="fa fa-gear" aria-hidden="true"></i>
-                จัดการข้อมูลเบิกยา</a>
+                จัดการข้อมูลเบิกยา</a
+              >
             </li>
             <!-- Dropdown Menu -->
             <li class="nav-item dropdown">
@@ -78,23 +86,26 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-              <i class="fa fa-gear" aria-hidden="true"></i>
+                <i class="fa fa-gear" aria-hidden="true"></i>
                 จัดการข้อมูลยา
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="/add_drug">
-                  <i class="fa fa-plus" aria-hidden="true"></i>
-                  เพิ่มยา</a></li>
-                  <li><hr class="dropdown-divider" /></li>
                 <li>
-                  <a class="dropdown-item" href="/manage_drug">
-                    <i class="fa fa-wrench" aria-hidden="true"></i>
-                    แก้ไขข้อมูลยา</a>
+                  <a class="dropdown-item" href="/add_product">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    เพิ่มยา</a
+                  >
                 </li>
-             
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="/manage_product">
+                    <i class="fa fa-wrench" aria-hidden="true"></i>
+                    แก้ไขข้อมูลยา</a
+                  >
+                </li>
               </ul>
             </li>
-       
+
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
@@ -104,19 +115,23 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-              <i class="fa fa-gear" aria-hidden="true"></i>
+                <i class="fa fa-gear" aria-hidden="true"></i>
                 จัดการประเภทยา
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
                   <a class="dropdown-item" href="/add_type">
-                  <i class="fa fa-plus" aria-hidden="true"></i>
-                  เพิ่มประเภทยา</a></li>
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    เพิ่มประเภทยา</a
+                  >
+                </li>
                 <li><hr class="dropdown-divider" /></li>
                 <li>
                   <a class="dropdown-item" href="/manage_type">
-                  <i class="fa fa-wrench" aria-hidden="true"></i>
-                  แก้ไขประเภทยา</a></li>
+                    <i class="fa fa-wrench" aria-hidden="true"></i>
+                    แก้ไขประเภทยา</a
+                  >
+                </li>
               </ul>
             </li>
             {% endif %}
@@ -130,7 +145,6 @@
               <a class="nav-link" href="/login">เข้าสู่ระบบ</a>
             </li>
             {% endif %}
-            
           </ul>
         </div>
       </div>
@@ -139,8 +153,8 @@
       {% include 'msg.html' %}
       {% comment %} {% include "msg.html" %} {% endcomment %} 
       {% block content%} 
-      {% include "drug_data.html" %}
+      {% include "product_data.html" %}
       {% endblock %}
     </div>
   </body>
-</html> 
+</html>
