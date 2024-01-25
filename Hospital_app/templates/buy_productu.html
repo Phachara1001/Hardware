@@ -22,7 +22,7 @@
                 <input type="text" class="form-control" placeholder="0123456789" name="Btal" required> 
               </div>
               <div class="form-group mt-2">
-                <label for="exampleFormControlSelect1">ชื่อยาที่ต้องการเบิก</label>
+                <label for="exampleFormControlSelect1">ชื่อสินค้าที่ต้องการเบิก</label>
                 <select class="form-control" name="product_name" id="product_name" required>
                     {% for product in products %}
                     <option value="{{ product.product_name }}">{{ product.product_name }}</option>
