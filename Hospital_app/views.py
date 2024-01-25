@@ -5,21 +5,21 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 # Create your views here.
 def home(request):
-    show_drug = drug.objects.all()
-    context  = {"drug_data" : show_drug}
-    return render(request,'drug_data.html',context)
+    show_product = product.objects.all()
+    context  = {"product_data" : show_product}
+    return render(request,'product_data.html',context)
 
-def add_drug(request):
-    context = {"drug_type" : d_type.objects.all()}
+def add_product(request):
+    context = {"product_type" : d_type.objects.all()}
     if request.method == "POST":
-        table = drug()
-        table.drug_name = request.POST['drug_name']
-        table.drug_type = d_type.objects.get(type_id = request.POST['drug_type'])
-        table.drug_qty = request.POST['drug_qty']
-        table.drug_exp = request.POST['drug_expired']
+        table = product()
+        table.product_name = request.POST['product_name']
+        table.product_type = d_type.objects.get(type_id = request.POST['product_type'])
+        table.product_qty = request.POST['product_qty']
+        table.product_exp = request.POST['product_expired']
         table.save()
-        return redirect('/manage_drug')
-    return render(request,'add_drug.html',context)
+        return redirect('/manage_product')
+    return render(request,'add_product.html',context)
 
 
 def add_type(request):
@@ -30,10 +30,10 @@ def add_type(request):
         return redirect('/manage_type')
     return render(request,'add_type.html')
 
-def manage_drug(request):
-    show_drug = drug.objects.all()
-    context  = {"drug" : show_drug}
-    return render(request,'edit_drug.html',context)
+def manage_product(request):
+    show_product = product.objects.all()
+    context  = {"product" : show_product}
+    return render(request,'edit_product.html',context)
 
 def manage_type(request):
     show_type = d_type.objects.all() 
@@ -43,10 +43,10 @@ def manage_type(request):
 
 
 
-def delete_drug(request,pk):
-    table = drug.objects.get(drug_id=pk)
+def delete_product(request,pk):
+    table = product.objects.get(product_id=pk)
     table.delete()
-    return redirect('/manage_drug')
+    return redirect('/manage_product')
 
 def delete_type(request,pk):
     table = d_type.objects.get(type_id=pk)
@@ -54,17 +54,17 @@ def delete_type(request,pk):
     return redirect('/manage_type')
 
 @login_required(login_url="/login")
-def edit_drug(request,pk):
-    table = drug.objects.get(drug_id=pk)
+def edit_product(request,pk):
+    table = product.objects.get(product_id=pk)
     table2 = d_type.objects.all()
-    context = {"drug_data" : table , "drug_type" : table2}
+    context = {"product_data" : table , "product_type" : table2}
     if request.method == "POST":
-        table.drug_name = request.POST['drug_name']
-        table.drug_type = d_type.objects.get(type_id = request.POST['drug_type'])
-        table.drug_qty = request.POST['drug_qty']
-        table.drug_exp = request.POST['drug_expired'] 
+        table.product_name = request.POST['product_name']
+        table.product_type = d_type.objects.get(type_id = request.POST['product_type'])
+        table.product_qty = request.POST['product_qty']
+        table.product_exp = request.POST['product_expired'] 
         table.save()
-        return redirect('/manage_drug')
+        return redirect('/manage_product')
     return render(request,'edit_d.html',context)
 
 @login_required(login_url="/login")
@@ -78,22 +78,22 @@ def edit_type(request,pk):
     return render(request,'edit_t.html',context)
 
 
-def increase_drug(request,pk):
+def increase_product(request,pk):
     print (pk)
-    table = drug.objects.get(drug_id=pk)
-    update_qty = table.drug_qty+1
-    table.drug_qty = update_qty
+    table = product.objects.get(product_id=pk)
+    update_qty = table.product_qty+1
+    table.product_qty = update_qty
     table.save()
-    return redirect('/manage_drug') 
+    return redirect('/manage_product') 
 
 
-def decrease_drug(request,pk):
+def decrease_product(request,pk):
     print (pk)
-    table = drug.objects.get(drug_id=pk)#ORM 
-    update_qty = table.drug_qty-1
-    table.drug_qty = update_qty
+    table = product.objects.get(product_id=pk)#ORM 
+    update_qty = table.product_qty-1
+    table.product_qty = update_qty
     table.save()
-    return redirect('/manage_drug')
+    return redirect('/manage_product')
 
 def custom_login(request):
     if request.method == 'POST':
@@ -116,24 +116,24 @@ def logout_view(request):
 
 from django.shortcuts import get_object_or_404, redirect
 
-def buy_drug_view(request):
+def buy_product_view(request):
     show_report = report_buy.objects.all() 
     context  = {"report" : show_report} 
-    return render(request, "buy_drug.html", context)
+    return render(request, "buy_product.html", context)
 
 
 @login_required(login_url="/login")
-def buy_drug(request):
-    context = {"userbuy": userbuy.objects.all(), "drugs": drug.objects.all()}
+def buy_product(request):
+    context = {"userbuy": userbuy.objects.all(), "products": product.objects.all()}
     if request.method == "POST":
         table = report_buy()
         table.username = request.POST.get('Busername')
         table.address = request.POST.get('Baddress')
         table.tal = request.POST.get('Btal')
-        table.drug_name = request.POST.get('drug_name')
-        table.drug_qty = request.POST.get('quantity')
+        table.product_name = request.POST.get('product_name')
+        table.product_qty = request.POST.get('quantity')
         table.save()
-    return render(request, 'buy_drugu.html', context)
+    return render(request, 'buy_productu.html', context)
 
 
 
